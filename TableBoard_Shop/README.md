@@ -43,6 +43,7 @@ Note:
     -> primary key(num)
     );
 
+
     
 ## index.php 수정
 [여기에 index.php 를 어떻게 수정했는지, 설명을 작성하세요.]
