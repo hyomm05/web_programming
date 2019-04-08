@@ -4,9 +4,10 @@
     $connect = mysql_connect("localhost","shm","1234"); // DB 연결
     mysql_select_db("shm_db", $connect);                // DB 선택
 
-    if ($_POST[title] == "search")                       	   // 데이터 입력 모드
-        $sql = "select * from boardz where title like '%title%' order by title desc;";
 
+    $sql = "select * from boardz where title like '%$_GET[search]%';";
+    $result = mysql_query($sql,$connect);
+    $records = mysql_num_rows($result); //총 레코드(결과)의 개수
 ?>
 
 
@@ -48,46 +49,34 @@
             <!--<hr class="seperator fifty-percent">-->
 
             <!-- Example Boardz element. --!>
-            <div class="boardz centered-block beautiful">
-                <ul>
-                    <li>
-                        <h1>PHP</h1>
-                        <br />
-                        <img src="http://2.bp.blogspot.com/-pINYV0WlFyA/VUK-QcGbU5I/AAAAAAAABcU/fNy2pd2cFRk/s1600/WEB-Jack-White-Poster-Creative.png" alt="demo image">
-                    </li>
 
-                    <li>
-                        <img src="http://payload140.cargocollective.com/1/10/349041/5110553/Florrie.jpg" alt="demo image"/>
-                    </li>
-                </ul>
 
-                <ul>
-                    <li>
-                        <h1>sumo</h1>
-                        <br />
-                        <img src="http://wpmedia.ottawacitizen.com/2015/11/01.jpg?quality=55&strip=all&w=840&h=630&crop=1" alt="demo image"/>
-                    </li>
-                    <li>
-                        <img src="https://s-media-cache-ak0.pinimg.com/736x/8c/ee/ff/8ceeff967c03c7cf4f86391dd6366544.jpg" alt="demo image"/>
-                    </li>
-                    <li>
-                        <h1>sumo</h1>
-                        <br />
-                        <img src="https://s-media-cache-ak0.pinimg.com/originals/87/16/8c/87168cbbf07cb54a9793bebaa20b1bde.jpg" alt="demo image"/>
-                    </li>
-                </ul>
 
-                <ul>
-                    <li>
-                        <h1>Sumo Summo</h1>
-                        Ex nostrud verterem mea, duo no delicata neglegentur. Audire integre rationibus ut pri, ex cibo oblique euismod sit, cibo iracundia vix at. Legimus torquatos definiebas an nec, mazim postulant at sit. Ne qui quando vocent accusata, nam tritani fierent no. Ea per vocent voluptatibus.
-                        <br />
-                        <img src="https://s-media-cache-ak0.pinimg.com/736x/22/95/48/229548086245c332443109ca9f2e0890.jpg" alt="demo image"/>
-                    </li>
-                    <li>
-                        <img src="https://inspirationfeeed.files.wordpress.com/2014/01/ca402f7410884454ec5c303336e8591d1.jpg" alt="demo image"/>
-                    </li>
-                </ul>      
+                  <div class="boardz centered-block beautiful">
+
+                      <?PHP
+
+                      echo "<ul>";
+                      $count;
+                      while ($row = mysql_fetch_array($result)) {
+                          if($records!=1) {
+                              if($count == round($records / 3) || $count == 2 * round($records/3)) {
+                                  echo "</ul><ul>";
+                              }
+                      }
+                          echo "<li>";
+                          if($row[title] != NULL){
+                              echo"<h1>$row[title]</h1>";
+                          }
+
+                          $row[contents];
+                          echo "<img src=\"$row[image_url]\">";
+                          echo "</li>";
+                          $count++;
+                      }
+                      echo "</ul>";
+                      ?>
+                </div>
             </div>
         </div>
 
