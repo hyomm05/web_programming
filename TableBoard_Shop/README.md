@@ -32,7 +32,8 @@
     - ex) name -> char or varchar
     
 Note: 
-create table tableboard_shop (
+
+    create table tableboard_shop (
     -> num int auto_increment,
     -> date date,
     -> order_id int,
@@ -40,8 +41,7 @@ create table tableboard_shop (
     -> price int,
     -> quantity int,
     -> primary key(num)
-    -> );
-
+    );
 
     
 ## index.php 수정
