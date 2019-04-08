@@ -25,25 +25,42 @@
 ## MySQL 테이블 생성!
 
 [여기에 테이블 생성 시, 사용한 Query 를 작성하세요.]
-Note: 
 - table 이름은 tableboard_shop 으로 생성
 - 기본키는 num 으로, 그 외의 속성은 board_form.php 의 input 태그 name 에 표시된 속성 이름으로 생성
 - 각 속성의 type 은 자유롭게 설정 (단, 입력되는 값의 타입과 일치해야 함)
     - ex) price -> int
     - ex) name -> char or varchar
     
+Note: 
+create table tableboard_shop (
+    -> num int auto_increment,
+    -> date date,
+    -> order_id int,
+    -> name char(10),
+    -> price int,
+    -> quantity int,
+    -> primary key(num)
+    -> );
+
+
+    
 ## index.php 수정
 [여기에 index.php 를 어떻게 수정했는지, 설명을 작성하세요.]
 
+
 ## board_form.php 수정
 [여기에 board_form.php 를 어떻게 수정했는지, 설명을 작성하세요.]
+
 
 ## function
 ### insert.php 수정
 [여기에 insert.php 를 어떻게 수정했는지, 설명을 작성하세요.]
 
+
 ### update.php 수정
 [여기에 update.php 를 어떻게 수정했는지, 설명을 작성하세요.]
 
+
 ### delete.php 수정
 [여기에 delete.php 를 어떻게 수정했는지, 설명을 작성하세요.]
+
