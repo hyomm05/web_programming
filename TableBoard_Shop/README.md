@@ -46,22 +46,50 @@ Note:
 
     
 ## index.php 수정
-[여기에 index.php 를 어떻게 수정했는지, 설명을 작성하세요.]
+1. 데이터베이스 연동
+2. tableboard_shop 테이블에서 num에 해당하는 레코드 가져옴
+3. mysql_query() 함수를 이용해서, MySQL 에 쿼리 스트링 전송
+4. mysql_fetch_array() 함수를 이용해서, 전달받은 레코드를 가져옴
 
 
 ## board_form.php 수정
-[여기에 board_form.php 를 어떻게 수정했는지, 설명을 작성하세요.]
-
+1. 데이터베이스 연동
+2. tableboard_shop 테이블에서 num에 해당하는 레코드 가져옴
+3. mysql_query() 함수를 이용해서, MySQL 에 쿼리 스트링 전송
+4. mysql_fetch_array() 함수를 이용해서, 전달받은 레코드를 가져옴
+5. update인 경우엔 입력한 정보로 표시해야함
+ex. <? echo $row[date]; ?> 
 
 ## function
 ### insert.php 수정
-[여기에 insert.php 를 어떻게 수정했는지, 설명을 작성하세요.]
+1. 데이터베이스 연동
+2. tableboard_shop 테이블에 있는 전체 레코드 검색
+3. mysql_query() 함수를 이용해서, MySQL 에 쿼리 스트링 전송
+4. mysql_fetch_array() 함수를 이용해서, 전달받은 레코드를 가져옴
+5. 삽입하고 싶은 레코드의 속성값을 받아옴
+입력한 데이터 순서대로 데이터가 삽입되어야 함
+$sql = "insert into tableboard_shop(date, order_id, name, price, quantity) 
+values ('$_POST[date]', '$_POST[order_id]', '$_POST[name]', '$_POST[price]',' $_POST[quantity]')";
+6. 출력값이 없을 때는, 에러 메시지 출력 
 
 
 ### update.php 수정
-[여기에 update.php 를 어떻게 수정했는지, 설명을 작성하세요.]
+1. 데이터베이스 연동
+2. tableboard_shop 테이블에 있는 전체 레코드 검색
+3. mysql_query() 함수를 이용해서, MySQL 에 쿼리 스트링 전송
+4. mysql_fetch_array() 함수를 이용해서, 전달받은 레코드를 가져옴
+5. 바꾸고 싶은 레코드의 속성값을 받아옴
+해당 레코드를 눌렀을 때, 기존에 저장되어 있던 데이터를 그대로 가져와야 함
+$sql = "update tableboard_shop set date='$_POST[date]', order_id=$_POST[order_id], name=$_POST[name], price=$_POST[price], quantity=$_POST[quantity] where num=$_GET[num]";
+6. 출력값이 없을 때는, 에러 메시지 출력 
 
 
 ### delete.php 수정
-[여기에 delete.php 를 어떻게 수정했는지, 설명을 작성하세요.]
+1. 데이터베이스 연동
+2. tableboard_shop 테이블에 있는 전체 레코드 검색
+3. mysql_query() 함수를 이용해서, MySQL 에 쿼리 스트링 전송
+4. mysql_fetch_array() 함수를 이용해서, 전달받은 레코드를 가져옴
+5. 삭제하고 싶은 레코드의 num값을 ($_GET[num])을 받아옴
+$sql = "delete from tableboard_shop where num=$_GET[num]";
+6. 출력값이 없을 때는, 에러 메시지 출력 
 
