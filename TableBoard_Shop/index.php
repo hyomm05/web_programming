@@ -3,11 +3,10 @@
     $connect = mysql_connect("localhost","shm","1234"); // DB 연결
     mysql_select_db("shm_db", $connect);                // DB 선택
 
-    $sql ="select *from tableboard_shop where date='$_POST[date]' and order_id='$_POST[order_id]' and name='$_POST[name]' and
-price='$_POST[price]' and quantity='$_POST[quantity]'";
+    $sql ="select *from tableboard_shop order by num";
 
     $result = mysql_query($sql,$connect);
-    $row = mysql_fetch_array($result);
+
 
 ?>
 
@@ -59,9 +58,8 @@ price='$_POST[price]' and quantity='$_POST[quantity]'";
                     <?php
                     # TODO : 아래 표시되는 내용을, MySQL 테이블에 있는 레코드로 대체하기!
                     # Note : column6 에 해당하는 Total 은 Price 값과 Quantity 값의 곱으로 표시!
-                    $sql="select * from tableboard_shop";
-                    $query=mysql_query($sql);
-                    while ($row=mysql_fetch_array($query)) {
+
+                    while ($row=mysql_fetch_array($result)) {
                         ?>
                         <tr onclick="location.href = ('board_form.php?num=<?echo $row['num']?>')">
                             <td class="column1"><? echo $row['date'] ?></td>
