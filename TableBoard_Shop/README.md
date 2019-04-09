@@ -47,7 +47,7 @@ Note:
     
 ## index.php 수정
 1. 데이터베이스 연동
-2. tableboard_shop 테이블에서 num에 해당하는 레코드 가져옴
+2. tableboard_shop 테이블에서 num에 해당하는 레코드 가져옴 (NUM에 대한 오름차순 정의)
 3. mysql_query() 함수를 이용해서, MySQL 에 쿼리 스트링 전송
 4. mysql_fetch_array() 함수를 이용해서, 전달받은 레코드를 가져옴
 
